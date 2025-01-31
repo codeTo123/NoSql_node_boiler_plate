@@ -7,6 +7,7 @@ import "./config/index";
 import userRoutes from './routes/user'
 import authRoutes from './routes/auth'
 import ProductRoutes from './routes/product'
+import V1Routes from './routes/index'
 
 const app = express();
 const port = process.env.PORT || 8000
@@ -28,6 +29,7 @@ app.get("/", (req: any, res: any) => {
 app.use("/user", userRoutes)
 app.use("/auth", authRoutes)
 app.use("/product", ProductRoutes)
+app.use("/api/v1",V1Routes);
 
 app.listen(port, (err: any) => {
     if (err) {
