@@ -21,7 +21,6 @@ const uploads = multer({ storage: multerStorage });
 const router = Router();
 
 router.post('/register', uploads.single('profile_image'), newUserRegistration)
-// router.put('/update_profile/:userId', authentication, uploads.single('profile_image'), updateProfile)
 router.get('/get_users', authentication, permission(["admin"]), getAllUsers)
 
 router
