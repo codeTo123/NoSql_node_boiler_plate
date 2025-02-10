@@ -71,25 +71,17 @@ export async function newUserRegistrationService(req: any) {
 //Update user profile service.
 export async function updateProfileService(req: any) {
     try {
-        const { role, hobbies, name } = req.body
+        const { role, name } = req.body
         const { userId } = req.params
         const file = req.file;
-        let _hobbies: any;
-
-        if (hobbies.startsWith("[") && hobbies.endsWith("]")) {
-            let extracted = hobbies.slice(1, -1).split(",");
-            _hobbies = extracted
-        } else {
-            console.log("Invalid format");
-        }
-
+  
         // Validate file upload
         if (!file) {
             throw new Error("File upload failed.");
         }
 
         // Check if the user already exists in the database and update
-        const user = await User.findByIdAndUpdate(userId, { role: role, hobbies: _hobbies, name: name, profile_image: file.filename }, { new: true })
+        const user = await User.findByIdAndUpdate(userId, { role: role, full_name: name, profile_image: file.filename }, { new: true })
 
         if (!user) {
             throw new Error("User not found")
@@ -134,7 +126,7 @@ export async function getMyProfileService(req: any) {
     try {
         const { userId } = req.params || req.query;
 
-        const user = await User.findOne({ _id: userId, deleted_at: null }).select("_id name email hobbies profile_image");
+        const user = await User.findOne({ _id: userId, deleted_at: null }).select("_id full_name email role profile_image");
 
         if (!user) {
             throw new Error("User not found.")
