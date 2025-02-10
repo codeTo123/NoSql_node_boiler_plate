@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             auto: true,
         },
-        name: {
+        full_name: {
             type: String,
             required: true,
             minlength: 3,
@@ -25,21 +25,29 @@ const userSchema = new mongoose.Schema(
             required: true,
             minlength: 8,
         },
-        isActive: {
+        is_verified: {
             type: Boolean,
-            default: true,
+            default: false,
         },
         role: {
             type: String,
-            enum: ["user", "admin", "seller"],
+            enum: ["user", "admin"],
             default: "user",
+        },
+        verify_token: {
+            type: String,
+            required: false
+        },
+        otp: {
+            type: Number,
+            required: false
         },
         profile_image: {
             type: String
         },
-        hobbies: {
-            type: [String], // Array of strings
-            default: [],
+        refresh_token:{
+            type:String,
+            required:false
         },
         created_at: {
             type: Date,

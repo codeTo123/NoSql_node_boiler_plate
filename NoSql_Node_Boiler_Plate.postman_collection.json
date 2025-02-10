@@ -1,0 +1,894 @@
+{
+	"info": {
+		"_postman_id": "25892c4f-00d2-4a05-80b5-ffe6109b8b1d",
+		"name": "NoSql_Node_Boiler_Plate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31244135"
+	},
+	"item": [
+		{
+			"name": "Auth Apis",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"jenis@example.com\",\r\n    \"password\":\"jenis@example\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OTP verification",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/auth/verify-otp?otp=9288",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"auth",
+								"verify-otp"
+							],
+							"query": [
+								{
+									"key": "otp",
+									"value": "9288"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "User registration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Rajat",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "rajat@example.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "rajat@example",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "user",
+									"type": "text"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/C:/Users/csteam/Downloads/download (1).jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/user/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Jenish shah",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "jenis@example.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "jenis@example",
+											"type": "text"
+										},
+										{
+											"key": "role",
+											"value": "seller",
+											"type": "text"
+										},
+										{
+											"key": "hobbies",
+											"value": "Cycling,hiking",
+											"type": "text"
+										},
+										{
+											"key": "profile_image",
+											"type": "file",
+											"src": "/C:/Users/csteam/Downloads/download.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:8000/user/register",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"user",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "350"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"15e-DDvdFhGpkgx8C5tXo3CR41u01Og\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 12:09:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User registered successfully.\",\n    \"data\": {\n        \"_id\": \"679b6c11beca1bcd23bdf813\",\n        \"name\": \"Jenish shah\",\n        \"email\": \"jenis@example.com\",\n        \"password\": \"AUfnW6KeROIF9ECu5ec4mQ==\",\n        \"isActive\": true,\n        \"role\": \"seller\",\n        \"profile_image\": \"Jenish-shah-1738238993562.jpeg\",\n        \"hobbies\": [\n            \"Cycling\",\n            \"hiking\"\n        ],\n        \"deleted_at\": null,\n        \"created_at\": \"2025-01-30T12:09:53.568Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update user profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWI2YmY2YmVjYTFiY2QyM2JkZjgxMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczODI0OTg1OX0.X-xjmfhok98vEJqlO5d8wilwGVKNKXbD-pK9uBAmTpw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Jenish Sahani"
+								},
+								{
+									"key": "role",
+									"value": "seller"
+								},
+								{
+									"key": "hobbies",
+									"value": "[Running,Balling]"
+								},
+								{
+									"key": "profile_image",
+									"type": "file",
+									"src": "/C:/Users/csteam/Downloads/download (1).jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/user/679b6c11beca1bcd23bdf813",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"679b6c11beca1bcd23bdf813"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWI2YmY2YmVjYTFiY2QyM2JkZjgxMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczODI0OTg1OX0.X-xjmfhok98vEJqlO5d8wilwGVKNKXbD-pK9uBAmTpw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/user/679b6bc4beca1bcd23bdf80c",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"679b6bc4beca1bcd23bdf80c"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get user profile response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8000/user/679b6bc4beca1bcd23bdf80c",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"user",
+										"679b6bc4beca1bcd23bdf80c"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "269"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10d-cFv5pYIaWW+Qx2F/dD4QPhOvvYo\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 18:58:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"User profile fetched successfully.\",\n    \"data\": {\n        \"_id\": \"679b6bc4beca1bcd23bdf80c\",\n        \"name\": \"Piyush Shukla\",\n        \"email\": \"piyush@example.com\",\n        \"profile_image\": \"http://localhost:8000/public/uploads/user/Piyush-Shukla-1738238916300.jpeg\",\n        \"hobbies\": [\n            \"show off\",\n            \"chilling\"\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "List all existing users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWI2YmY2YmVjYTFiY2QyM2JkZjgxMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczODI0OTg1OX0.X-xjmfhok98vEJqlO5d8wilwGVKNKXbD-pK9uBAmTpw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/user/get_users?page=1&pageRecord=5&search=",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"get_users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageRecord",
+									"value": "5"
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3OWI2YmY2YmVjYTFiY2QyM2JkZjgxMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczODI2Mzg3N30.R7FZAR7hEdR0QxmWEfatfh1zjiR5ZBvSEraT-QG62kM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/user/679b6bc4beca1bcd23bdf80c",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"user",
+								"679b6bc4beca1bcd23bdf80c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task Apis",
+			"item": [
+				{
+					"name": "Add new task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWE0OTkxMTYwNDRjYjMzNGE4NTFmNiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM5MjEzMjIxfQ.RjggjAWgHXvG0Z-ImH2bQs6GZ1MRTthUAEufzI9qs4o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Work done\",\r\n    \"description\": \"work has been done.\",\r\n    \"due_date\": \"2025-03-10\",\r\n    \"priority\": \"high\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/task",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"product 5\",\r\n    \"qty\":250,\r\n    \"price\":199,\r\n    \"exp_date\":\"2027-01-20\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/product",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"product"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "228"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e4-QwVVA+COrCAYOdpeAIAR313R8GI\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 19:49:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product added successfully.\",\n    \"data\": {\n        \"_id\": \"679bd7ac2e8822ae816331b2\",\n        \"name\": \"product 5\",\n        \"qty\": 250,\n        \"price\": 199,\n        \"exp_date\": \"2027-01-20T00:00:00.000Z\",\n        \"deleted_at\": null,\n        \"created_at\": \"2025-01-30T19:49:00.499Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get existing task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWEzNzg4MmY5Y2IwNDEzYjA2YTRjZiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTIxNTE1NX0.Ac7tUawee4v5KJjaaloEse0C1j704cNNv-NfUDaoiMw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/task?page=1&pageRecords=10&search=",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"task"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "pageRecords",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": ""
+								},
+								{
+									"key": "fromDate",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "toDate",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"product 5\",\r\n    \"qty\":250,\r\n    \"price\":199,\r\n    \"exp_date\":\"2027-01-20\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8000/product",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"product"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=31536000; includeSubDomains"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "228"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"e4-QwVVA+COrCAYOdpeAIAR313R8GI\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 30 Jan 2025 19:49:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Product added successfully.\",\n    \"data\": {\n        \"_id\": \"679bd7ac2e8822ae816331b2\",\n        \"name\": \"product 5\",\n        \"qty\": 250,\n        \"price\": 199,\n        \"exp_date\": \"2027-01-20T00:00:00.000Z\",\n        \"deleted_at\": null,\n        \"created_at\": \"2025-01-30T19:49:00.499Z\",\n        \"__v\": 0\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update task details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWE0OTkxMTYwNDRjYjMzNGE4NTFmNiIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzM5MjEzMjIxfQ.RjggjAWgHXvG0Z-ImH2bQs6GZ1MRTthUAEufzI9qs4o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"night work\",\r\n    \"description\": \"work has been done.\",\r\n    \"due_date\": \"2025-03-10T00:00:00.000Z\",\r\n    \"priority\": \"high\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/task/67aa6ccc5dbbb405b074ef33",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"task",
+								"67aa6ccc5dbbb405b074ef33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete task by admin only",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWEzNzg4MmY5Y2IwNDEzYjA2YTRjZiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTczOTIxNzU0NX0.gOOiGCIR3D03qJy0XVUcKUnGxgZBXKwGJbbijHIzxO0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/task/67aa49ef16044cb334a851fa",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"task",
+								"67aa49ef16044cb334a851fa"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

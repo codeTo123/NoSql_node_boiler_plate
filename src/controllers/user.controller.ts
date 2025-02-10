@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { deleteProfileService, getAllUserService, getMyProfileService, newUserRegistrationService, updateProfileService } from '../services/user'
+import { deleteProfileService, getAllUserService, getMyProfileService, newUserRegistrationService, updateProfileService } from '../services/user.service'
 
 // Controller function for handling user registration request
 export const newUserRegistration = async (req: Request, res: Response) => {

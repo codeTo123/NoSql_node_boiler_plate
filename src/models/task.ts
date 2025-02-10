@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const ProductSchema = new mongoose.Schema({
+const TaskSchema = new mongoose.Schema({
     _id: {
         type: mongoose.Schema.Types.ObjectId,
         auto: true,
@@ -10,23 +10,25 @@ const ProductSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    qty: {
-        type: Number,
-        required: true,
-    },
-    price: {
-        type: Number,
-        required: true,
+    description: {
+        type: String,
+        required: false,
     },
     added_by: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true, // Fixed
     },
-    exp_date: {
+    due_date: {
         type: Date,
         required: true,
         default: Date.now,
+    },
+    priority: {
+        type: String,
+        enum: ['low', 'medium', 'high'],
+        required: true,
+        default: 'medium'
     },
     created_at: {
         type: Date,
@@ -42,5 +44,5 @@ const ProductSchema = new mongoose.Schema({
         timestamps: false,
         underscored: true
     })
-const Product = mongoose.model("Product", ProductSchema)
-export default Product
+const Task = mongoose.model("Task", TaskSchema)
+export default Task

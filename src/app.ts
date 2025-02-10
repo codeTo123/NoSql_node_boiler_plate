@@ -4,9 +4,9 @@ import cors from 'cors'
 import helmet from 'helmet'
 import path from 'path'
 import "./config/index";
-import userRoutes from './routes/user'
+import userRoutes from './routes/user.route'
 import authRoutes from './routes/auth'
-import ProductRoutes from './routes/product'
+import TaskRoutes from './routes/task.route'
 import V1Routes from './routes/index'
 
 const app = express();
@@ -28,8 +28,8 @@ app.get("/", (req: any, res: any) => {
 })
 app.use("/user", userRoutes)
 app.use("/auth", authRoutes)
-app.use("/product", ProductRoutes)
-app.use("/api/v1",V1Routes);
+app.use("/task", TaskRoutes)
+// app.use("/api/v1",V1Routes);
 
 app.listen(port, (err: any) => {
     if (err) {

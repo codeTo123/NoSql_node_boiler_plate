@@ -1,23 +1,17 @@
 
 import User from '../models/user'
+import { generateToken } from '../utils/authentication';
 import { hashPassword } from '../utils/encryption';
+import { generateOtp } from '../utils/general';
+import { sendVerificationEmail } from '../utils/mailer';
 import { pagination } from '../utils/pagination';
 
 //New user registration.
 export async function newUserRegistrationService(req: any) {
     try {
         // Extract user details from request body
-        const { name, email, password, role, hobbies } = req.body;
+        const { name, email, password, role } = req.body;
         const file = req.file;
-        let _hobbies: any;
-
-        if (hobbies.startsWith("[") && hobbies.endsWith("]")) {
-            let extracted = hobbies.slice(1, -1).split(",");
-            _hobbies = extracted
-            console.log(extracted); // Output: [ 'Writing', 'Balling' ]
-        } else {
-            console.log("Invalid format");
-        }
 
         // Validate file upload
         if (!file) {
@@ -38,17 +32,35 @@ export async function newUserRegistrationService(req: any) {
 
         // Create a new user record
         const newUser = new User({
-            name,
+            full_name: name,
             email: _email,
             password: hashedPassword,
             role,
-            hobbies: _hobbies, // No need to stringify, as MongoDB supports arrays
             profile_image: file.filename, // Store uploaded file's filename
         });
 
         await newUser.save(); // Save the user to MongoDB
+
+        const token = generateToken(newUser.email)
+        const otp: number = generateOtp(4)
+
+        await User.findByIdAndUpdate(newUser._id, { verify_token: token, otp: otp });
+
+        newUser.verify_token = token;
+        // Convert the Mongoose document to a plain object
+        const userResponse = newUser.toObject();
+
+        // Remove unwanted fields
+        delete userResponse.password;
+        delete userResponse.is_verified;
+        delete userResponse.deleted_at;
+        delete userResponse.verify_token;
+        userResponse.profile_image = `${process.env.BASE_URL}/${userResponse.profile_image}`
+
+        //Send mail to register user.
+        await sendVerificationEmail(newUser, otp)
         // Return success response with newly created user data
-        return newUser;
+        return userResponse;
     } catch (error) {
         // Log the error for debugging purposes
         console.error("Error in user registration:", error);
@@ -96,15 +108,13 @@ export async function getAllUserService(req: any) {
         const { page, pageRecord, search } = req.query;
         const { limit, offset } = pagination(page, pageRecord)
 
-        const searchQuery = search ? `%${search}%` : '%';
-
         const user = await User.find({
             deleted_at: null,
             $or: [{ name: { $regex: search, $options: "i" } },
             { email: { $regex: search, $options: "i" } },
             ]
         })
-            .select("_id name email role hobbies profile_image created_at")
+            .select("_id full_name email role profile_image created_at")
             .limit(limit)
             .skip(offset)
             .sort({ ["created_at"]: -1 })
@@ -124,8 +134,8 @@ export async function getMyProfileService(req: any) {
     try {
         const { userId } = req.params || req.query;
 
-        const user = await User.findOne( {_id:userId, deleted_at: null }).select("_id name email hobbies profile_image");
-      
+        const user = await User.findOne({ _id: userId, deleted_at: null }).select("_id name email hobbies profile_image");
+
         if (!user) {
             throw new Error("User not found.")
         }

@@ -27,3 +27,21 @@ export const authentication = async (req: AppRequest, res: Response, next: NextF
         res.status(500).json({ error: err.message || err })
     }
 }
+
+
+export const generateToken = (user: any) => {
+    const token = JWT.sign(user, process.env.JWT_SECRET)
+    return token;
+}
+
+export const verifyToken = (token: any) => {
+    const _token = JWT.verify(token, process.env.JWT_SECRET, ((err: any, decode: any) => {
+        if (err) {
+            throw err
+        }
+        return decode;
+    }))
+
+    return _token;
+}
+
